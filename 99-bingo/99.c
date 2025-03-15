@@ -1,7 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
-#define MAXM 256
+#define MAXM 257
 #define MAXN 10
 #define MAXNAMELEN 64
 
@@ -55,15 +56,15 @@ void getPlayerInfo(Game *game) {
 void printWinner(Game *game) {
     printf("%d ", game->winCondition);
     for (int i = 0; i < game->winnerCount - 1; i++) {
-        printf("%d ", game->players[game->winner[i]].name);
+        printf("%s ", game->players[game->winner[i]].name);
     }
-    printf("%d\n", game->players[game->winner[game->winnerCount-1]].name);
+    printf("%s\n", game->players[game->winner[game->winnerCount-1]].name);
 }
 
 void gamePlay(Game *game) {
     for (int _ = 0; _ < game->boardSize * game->boardSize; _++) {
         int tmp;
-        scanf("%d", tmp);
+        scanf("%d", &tmp);
 
         for (int i = 0; i < game->playerCount; i++) {
             int x = game->players[i].numToPos[tmp][0];
@@ -71,13 +72,14 @@ void gamePlay(Game *game) {
             game->players[i].row[x]++;
             game->players[i].col[y]++;
             if (x == y) game->players[i].diag[0]++;
-            if (x + y == game->boardSize) game->players[i].diag[1]++;
+            if (x + y == game->boardSize - 1) game->players[i].diag[1]++;
             if (game->players[i].row[x] == game->boardSize ||
-                game->players[i].col[y] == game->boardSize ||
-                game->players[i].diag[0] == game->boardSize ||
-                game->players[i].diag[1] == game->boardSize)
+                    game->players[i].col[y] == game->boardSize ||
+                    game->players[i].diag[0] == game->boardSize ||
+                    game->players[i].diag[1] == game->boardSize) {
                 game->winner[game->winnerCount] = i;
                 game->winnerCount++;
+            }
         }
         if (game->winnerCount != 0) {
             game->winCondition = tmp;
@@ -87,5 +89,12 @@ void gamePlay(Game *game) {
 }
  
 int main(void) {
+    Game *game = (Game *)malloc(sizeof(Game));
+
+    initGame(game);
+    getPlayerInfo(game);
+    gamePlay(game);
+    printWinner(game);
+
     return 0;
 }
