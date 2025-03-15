@@ -1,5 +1,21 @@
 #include <stdio.h>
 #include <stdbool.h>
+
+#define MAXM 256
+#define MAXN 10
+#define MAXNAMELEN 64
+
+typedef struct player {
+    char name[MAXNAMELEN];
+    int numToPos[MAXM][2];
+    int row[MAXM];
+    int col[MAXM];
+    int diag[2];
+} Player;
+
+typedef struct game {
+    Player players[MAXN];
+} Game;
  
 int main(void) {
     int n, m;
