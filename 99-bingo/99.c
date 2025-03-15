@@ -7,7 +7,7 @@
 
 typedef struct player {
     char name[MAXNAMELEN];
-    int numToPos[MAXM][2];
+    int numToPos[MAXM*MAXM][2];
     int row[MAXM];
     int col[MAXM];
     int diag[2];
@@ -15,7 +15,39 @@ typedef struct player {
 
 typedef struct game {
     Player players[MAXN];
+    int playerCount;
+    int winner[MAXN];
+    int winnercount;
 } Game;
+
+void initGame(Game *game) {
+    game->winnercount = 0;
+    for (int i = 0; i < MAXN; i++) {
+        game->players[i].diag[0] = 0;
+        game->players[i].diag[1] = 0;
+        for (int j = 0; j < MAXM; j++) {
+            game->players[i].row[j] = 0;
+            game->players[i].col[j] = 0;
+        }
+    }
+}
+
+void getPlayerInfo(Game *game) {
+    int n, m;
+    scanf("%d%d", &n, &m);
+    game->playerCount = n;
+    for (int i = 0; i < n; i++) {
+        scanf("%s", game->players[i].name);
+        for (int j = 0; j < m; j++) {
+            for (int k = 0; k < m; k++) {
+                int tmp; 
+                scanf("%d", &tmp);
+                game->players[i].numToPos[tmp][0] = j;
+                game->players[i].numToPos[tmp][1] = k;
+            }            
+        }
+    }
+} 
  
 int main(void) {
     int n, m;
