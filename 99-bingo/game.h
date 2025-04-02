@@ -16,12 +16,13 @@ class Game
     private:
         vector<Player> playerBase;
         int playerCount, boardSize;
-        vector<int> winner;
-        int winnerCount, winCondition;
+        vector<string> winner;
+        int winCondition;
     public:
-        Game() : winnerCount(0) {};
+        Game() : winCondition(0) {};
         void getGameInfo();
         void play();
+        void printResult();
 };
 
 #endif

@@ -11,8 +11,11 @@ using namespace std;
 #define MAXNAMELEN 64
 
 int main(void) {
-    Game master;
-    master.getGameInfo();
-    master.play();
+    Game game;
+
+    game.getGameInfo();
+    game.play();
+    game.printResult();
+    
     return 0;
 }

@@ -22,6 +22,18 @@ void Game::play() {
         cin >> curNumber;
         for (int pID = 0; pID < playerCount; pID++) {
             playerBase[pID].chooseNumber(curNumber, boardSize);
+            if (playerBase[pID].checkWin(boardSize)) {
+                winCondition = curNumber;
+                winner.push_back(playerBase[pID].getName());
+            }
         }
+        if (winCondition != 0) break;
     }
+}
+
+void Game::printResult() {
+    cout << winCondition << " ";
+    for (auto playerName : winner)
+        cout << playerName << " ";
+    cout << "\n";
 }
