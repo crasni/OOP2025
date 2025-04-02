@@ -87,14 +87,14 @@ void gamePlay(Game *game) {
         }
     }
 }
- 
-int main(void) {
-    Game *game = (Game *)malloc(sizeof(Game));
 
-    initGame(game);
-    getPlayerInfo(game);
-    gamePlay(game);
-    printWinner(game);
+int main(void) {
+    // Game *game = (Game *)malloc(sizeof(Game));
+
+    // initGame(game);
+    // getPlayerInfo(game);
+    // gamePlay(game);
+    // printWinner(game);
 
     return 0;
 }

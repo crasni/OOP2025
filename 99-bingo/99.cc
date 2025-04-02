@@ -4,11 +4,14 @@
 using namespace std;
 
 #include "player.h"
+#include "game.h"
 
 #define MAXM 257
 #define MAXN 10
 #define MAXNAMELEN 64
 
 int main(void) {
+    Game master;
+    master.getGameInfo();
     return 0;
 }

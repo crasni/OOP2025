@@ -14,12 +14,13 @@ using namespace std;
 class Game
 {
     private:
-        vector<Player> player;
+        vector<Player> playerBase;
         int playerCount, boardSize;
         vector<int> winner;
         int winnerCount, winCondition;
     public:
         Game() : winnerCount(0) {};
+        void getGameInfo();
 };
 
 #endif
