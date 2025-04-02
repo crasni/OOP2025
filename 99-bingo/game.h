@@ -21,6 +21,7 @@ class Game
     public:
         Game() : winnerCount(0) {};
         void getGameInfo();
+        void play();
 };
 
 #endif

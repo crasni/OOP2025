@@ -13,5 +13,6 @@ using namespace std;
 int main(void) {
     Game master;
     master.getGameInfo();
+    master.play();
     return 0;
 }

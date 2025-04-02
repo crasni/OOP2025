@@ -15,3 +15,13 @@ void Game::getGameInfo() {
         playerBase.push_back(curPlayer);
     }
 }
+
+void Game::play() {
+    int curNumber;
+    for (int i = 0; i < boardSize*boardSize; i++) {
+        cin >> curNumber;
+        for (int pID = 0; pID < playerCount; pID++) {
+            playerBase[pID].chooseNumber(curNumber, boardSize);
+        }
+    }
+}

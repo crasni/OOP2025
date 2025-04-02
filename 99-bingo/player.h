@@ -12,18 +12,21 @@ class Player
         vector<vector<int>> numToPos;
         vector<int> row, col;
         int diag[2];
-        bool checkRow(int boardSize);
-        bool checkCol(int boardSize);
-        bool checkDiag(int boardSize);
+        bool checkRow(const int boardSize);
+        bool checkCol(const int boardSize);
+        bool checkDiag(const int boardSize);
     public:
-        Player(string s, int boardSize) :
+        Player(string s, const int boardSize) :
             name(s), numToPos((size_t)(boardSize*boardSize), vector<int>(2, 0)), 
             row((size_t)boardSize, 0), col((size_t)boardSize, 0), diag {0, 0} {}
-        bool checkWin(int boardSize);
+        bool checkWin(const int boardSize);
         string getName() {return name;};
-        void getInfo(int boardSize);
+        void getInfo(const int boardSize);
+        void chooseNumber(const int number, const int boardSize);
 
+        //debug use
         void printnumToPos();
+        void printInfo();
 };
 
 #endif
